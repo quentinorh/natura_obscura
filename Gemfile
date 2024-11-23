@@ -49,7 +49,7 @@ gem "bootsnap", require: false
 # gem "image_processing", "~> 1.2"
 
 gem "bootstrap", "~> 5.2"
-gem "devise"
+#gem "devise"
 gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
@@ -78,3 +78,7 @@ group :test do
   gem "selenium-webdriver"
 
 end
+
+gem "tailwindcss-rails", "~> 3.0"
+gem 'cloudinary'
+gem 'bcrypt'

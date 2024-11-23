@@ -1,2 +1,32 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="min-h-screen bg-black">
+  <h1 class="py-12 text-4xl font-serif text-center text-white">Natura Obscura</h1>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <% @posts.each do |post| %>
+        <%= link_to post_path(post), class: "group" do %>
+          <div class="relative aspect-[4/3] overflow-hidden rounded-lg">
+            <% if post.image.attached? %>
+              <%= image_tag post.image, 
+                  class: "w-full h-full object-cover transition-transform duration-300 group-hover:scale-105",
+                  alt: post.title %>
+              
+              <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <div class="absolute bottom-0 left-0 right-0 p-4">
+                  <h2 class="text-xl font-medium text-white"><%= post.title %></h2>
+                  <p class="text-sm text-gray-200 mt-2">
+                    <%= l(post.created_at, format: :long) %>
+                  </p>
+                </div>
+              </div>
+            <% else %>
+              <div class="w-full h-full bg-gray-800 flex items-center justify-center">
+                <span class="text-gray-400">Image non disponible</span>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

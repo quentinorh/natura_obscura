@@ -1,6 +1,5 @@
 class PagesController < ApplicationController
-  skip_before_action :authenticate_user!, only: [ :home ]
-
   def home
+    @posts = Post.with_attached_image.order(created_at: :desc)
   end
 end
